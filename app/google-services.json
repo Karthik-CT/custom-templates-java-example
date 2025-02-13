@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "844775439061",
+    "project_id": "ctcustomtemplates-1e2c0",
+    "storage_bucket": "ctcustomtemplates-1e2c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844775439061:android:c4786901107770d8a4805c",
+        "android_client_info": {
+          "package_name": "com.karthik.javaexample"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnGSE64rfAfZVhEHeBLh-vGdtLHHeGE8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
