@@ -15,6 +15,8 @@ import java.util.Map;
 public class SecondActivity extends BaseActivity {
 
     CleverTapAPI cleverTapAPI;
+
+    //Define CleverTapDisplayUnit unit as a global variable
     CleverTapDisplayUnit unit;
 
     @Override
@@ -40,6 +42,7 @@ public class SecondActivity extends BaseActivity {
         System.out.println("onDisplayUnitsLoaded: " + units);
         if (units != null) {
             for (int i = 0; i < units.size(); i++) {
+                // store the value of unit in the global variable
                 unit = units.get(i);
                 System.out.println("unit: " + unit);
             }
