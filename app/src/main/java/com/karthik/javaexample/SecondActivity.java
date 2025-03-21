@@ -1,9 +1,8 @@
 package com.karthik.javaexample;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.clevertap.android.sdk.CleverTapAPI;
@@ -13,31 +12,25 @@ import com.clevertap.ct_templates.nd.coachmark.CoachMarkHelper;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements DisplayUnitListener {
+public class SecondActivity extends BaseActivity {
 
     CleverTapAPI cleverTapAPI;
+    CleverTapDisplayUnit unit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_second);
 
         CleverTapAPI.setDebugLevel(3);
 
         cleverTapAPI =  CleverTapAPI.getDefaultInstance(getApplicationContext());
-        cleverTapAPI.setDisplayUnitListener(this);
 
-        findViewById(R.id.btn_second_activity).setOnClickListener(new View.OnClickListener() {
+        //for example we have called it on click of textview you have to call prepareDisplayView(unit) once your Activity gets rendered to the fullest
+        findViewById(R.id.frame_layout_restaurant).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cleverTapAPI.pushEvent("coachmarks_nd");
-                try {
-                    Thread.sleep(5000);
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
+                prepareDisplayView(unit);
             }
         });
     }
@@ -47,9 +40,8 @@ public class MainActivity extends AppCompatActivity implements DisplayUnitListen
         System.out.println("onDisplayUnitsLoaded: " + units);
         if (units != null) {
             for (int i = 0; i < units.size(); i++) {
-                CleverTapDisplayUnit unit = units.get(i);
+                unit = units.get(i);
                 System.out.println("unit: " + unit);
-                prepareDisplayView(unit);
             }
         }
     }
@@ -71,7 +63,9 @@ public class MainActivity extends AppCompatActivity implements DisplayUnitListen
                 }
                 return null;
             });
-        } else {
+        }
+        else {
+            Log.d("SecondActivity", "I am from else block of nd_id");
             System.out.println("NA");
         }
     }
